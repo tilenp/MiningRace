@@ -13,11 +13,11 @@ class MiningCard:
     profit_threshold: Decimal = CARD_PROFIT_THRESHOLD
 
     def _handle_reserved_state(self, state: Reserved) -> None:
-        # get number of days the card still needs to be in reserved state
-        days_left = state.days_left
-        if days_left > 1:
-            # still in reserved state period, reduce for 1 day
-            self.state = Reserved(days_left=days_left - 1)
+        # calculate number of days the card still needs to be in reserved state
+        days_left = state.days_left - 1
+        if days_left > 0:
+            # still in reserved state period
+            self.state = Reserved(days_left=days_left)
         else:
             # change state into active, mining starts next day
             self.state = Active(mined_btc=Decimal("0"))
@@ -44,7 +44,7 @@ class MiningCard:
                 self._handle_reserved_state(state=reserved)
                 return Decimal("0")
             case Active(mined_btc=btc) as active:
-                mined_amount = self._handle_active_state(state=active)
-                return mined_amount
+                mined_today = self._handle_active_state(state=active)
+                return mined_today
             case _:
                 raise RuntimeError(f"Mine called on a card in state: {self.state}")

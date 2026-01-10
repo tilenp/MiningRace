@@ -11,6 +11,7 @@ PRIME_MAX_NUM_CARDS = 50
 PLATINUM_MAX_NUM_CARDS = 30
 
 # card
+# fix card cost estimation, it makes it too expensive
 CARD_COST: Decimal = round_btc((Decimal("-1976") + Decimal("0.026") * BTC_PRICE) / BTC_PRICE)
 CARD_MINES_BTC_PER_DAY = Decimal("0.0000245")
 CARD_PROFIT_THRESHOLD = Decimal("14")

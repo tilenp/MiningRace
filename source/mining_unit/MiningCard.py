@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from decimal import Decimal
 
-from source.Constants import CARD_COST, CARD_MINES_BTC_PER_DAY, CARD_PROFIT_THRESHOLD, CARD_EXPENSES_PER_DAY
+from source.Constants import CARD_COST, CARD_MINES_BTC_PER_DAY, CARD_PROFIT_THRESHOLD
 from source.mining_unit.MiningCardState import MiningCardState, Reserved, Active, Deactivated
 
 

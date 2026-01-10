@@ -40,7 +40,8 @@ class User:
             # build new licence with cards package
             licence, cost = licence_builder.build()
 
-    def add_new_cards(self) -> None:
+    def add_new_cards(self) -> int:
+        num_cards_added = 0
         while self.btc_amount >= CARD_COST:
             # Find the best licence to add a card:
             # - can_add_mining_card() is True
@@ -57,3 +58,7 @@ class User:
             self.btc_amount -= CARD_COST
             # Add card
             licence.cards.add(MiningCard())
+            # acknowledge card added
+            num_cards_added = + 1
+        # return number of added cards
+        return num_cards_added

@@ -16,14 +16,14 @@ class MiningCard:
         # calculate number of days the card still needs to be in reserved state
         days_left = state.days_left - 1
         if days_left > 0:
-            # still in reserved state period
+            # still in reserved state period, but decrement amount of days
             self.state = Reserved(days_left=days_left)
         else:
             # change state into active, mining starts next day
             self.state = Active(mined_btc=Decimal("0"))
 
     def _handle_active_state(self, state: Active) -> Decimal:
-        # card's mining target
+        # card's mining target -> when the target is reached the card will be deactivated
         mined_btc_target = (Decimal("1") + (self.profit_threshold / Decimal("100"))) * self.cost
         # amount card can still mine
         diff_to_mining_target = max(Decimal("0"), mined_btc_target - state.mined_btc)

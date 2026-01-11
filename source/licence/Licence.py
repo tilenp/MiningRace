@@ -35,7 +35,7 @@ class Licence:
         self.cards -= deactivated_cards
 
     def _collect_btc_from_cards(self) -> Decimal:
-        # collect mined BTC from all cards
+        # collect mined BTC from all cards in the licence
         mined_today = Decimal("0")
         for card in self.cards:
             mined_today += card.get_daily_mining_amount()
@@ -53,7 +53,7 @@ class Licence:
         # should not be called on expired licence
         if not isinstance(state, Valid):
             raise RuntimeError(f"Only valid licence can mine")
-        # collect BTC all cards have mined today
+        # collect the amount of BTC that all cards in this licence mined today
         mined_today = self._collect_btc_from_cards()
         # remove deactivated cards
         self._remove_deactivated_mining_cards()

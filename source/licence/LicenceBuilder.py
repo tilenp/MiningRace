@@ -23,6 +23,7 @@ class LicenceBuilder:
         self._set_licence_config()
 
     def _set_licence_config(self) -> None:
+        # set licence cost and max number of cards the licence can accept based on licence type
         match self.licence_type:
             case LicenceType.PRIME:
                 self.licence_cost = PRIME_LICENCE_COST

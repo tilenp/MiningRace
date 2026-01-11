@@ -18,6 +18,7 @@ class Simulator:
                 user.add_new_licence_with_cards(licence_type=LicenceType.PLATINUM, num_cards=10)
             # add new cards
             num_cards_added = user.add_new_cards()
+            # print out the state for each day: BTC amount in USD, how many cards were added
             print( f"day: {day}, BTC value: ${(user.btc_amount * BTC_PRICE):.2f}, number of cards added: {num_cards_added}")
         # return total BTC amount for the user
         return user.btc_amount

@@ -59,6 +59,6 @@ class User:
             # Add card
             licence.cards.add(MiningCard())
             # acknowledge card added
-            num_cards_added = + 1
+            num_cards_added += 1
         # return number of added cards
         return num_cards_added

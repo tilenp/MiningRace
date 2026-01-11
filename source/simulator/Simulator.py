@@ -43,10 +43,11 @@ if __name__ == "__main__":
         ending_value=btc_amount,
         years=Decimal(days) / Decimal("365"),
     )
-    print("--- Result ---")
+    print("--- Results ---")
     print(f"Bitcoin price: ${BTC_PRICE:.2f}")
     print(f"Prime licence cost: ${(PRIME_LICENCE_COST * BTC_PRICE):.2f}")
-    print(f"Card cost: {(CARD_COST * BTC_PRICE):.2f}")
+    print(f"card cost: ${(CARD_COST * BTC_PRICE):.2f}")
+    print(f"card lifetime: {CARD_NUM_MINING_DAYS} days")
     print(f"invested amount: ${(cost * BTC_PRICE):.2f}")
     print(f"final amount: ${(btc_amount * BTC_PRICE):.2f}")
     print(f"CAGR: {(cagr * 100):.2f}%")
